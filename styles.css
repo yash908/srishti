@@ -1,0 +1,1476 @@
+:root {
+  /* Royal Kota Twilight + Rich Antique & Champagne Gold */
+  --bg-outer: #0b122e;
+  --bg-canvas: #16265e;
+  --ink: #fffaf0;
+  --ink-soft: #e6ddc8;
+  --gold: #eab95c;
+  --gold-bright: #ffe59e;
+  --gold-pale: #fff3cf;
+  --gold-deep: #b8842a;
+  --gold-border: rgba(244, 206, 122, 0.72);
+  --arch-cream-top: #fff9e6;
+  --arch-cream-bot: #f2cf7c;
+  --arch-ink: #4a191a;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 16px;
+  --space-4: 24px;
+  --space-5: 32px;
+  --space-6: 48px;
+  --space-7: 64px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  background: var(--bg-outer);
+}
+
+body {
+  margin: 0;
+  min-height: 100dvh;
+  background: var(--bg-outer);
+  color: var(--ink);
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+body.is-locked {
+  overflow: hidden;
+  height: 100dvh;
+}
+
+/* ==========================================================================
+   Phone-Width Minimalist Canvas with Warm Golden Shimmer
+   ========================================================================== */
+.invite {
+  position: relative;
+  width: min(440px, 100%);
+  margin: 0 auto;
+  min-height: 100dvh;
+  background-color: var(--bg-canvas);
+  background-image:
+    radial-gradient(circle at 50% 24%, rgba(245, 204, 114, 0.14) 0, transparent 48%),
+    radial-gradient(circle at 20% 62%, rgba(245, 204, 114, 0.09) 0, transparent 45%),
+    radial-gradient(circle at 82% 84%, rgba(245, 204, 114, 0.12) 0, transparent 45%),
+    linear-gradient(180deg, #142357 0%, #1c2f70 34%, #182861 70%, #101b44 100%);
+  box-shadow:
+    0 0 0 1px rgba(244, 206, 122, 0.2),
+    0 0 72px rgba(4, 7, 22, 0.72);
+  overflow-x: clip;
+}
+
+/* Subtle gold-flecked handmade paper grain */
+.invite::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: min(440px, 100%);
+  transform: translateX(-50%);
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.09;
+  background-image:
+    radial-gradient(rgba(255, 230, 160, 0.95) 0.7px, transparent 0.7px),
+    radial-gradient(rgba(255, 255, 255, 0.65) 0.5px, transparent 0.5px);
+  background-size: 22px 22px, 15px 15px;
+  background-position: 0 0, 7px 9px;
+}
+
+.invite > * {
+  position: relative;
+  z-index: 2;
+}
+
+/* ==========================================================================
+   Floating Controls (Close + Equalizer Music Button)
+   ========================================================================== */
+.floating-bar {
+  position: fixed;
+  top: var(--space-3);
+  left: 50%;
+  width: min(440px, 100%);
+  transform: translateX(-50%);
+  padding: 0 var(--space-3);
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  pointer-events: none;
+}
+
+.pill-control,
+.audio-toggle {
+  pointer-events: auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  border: 1px solid rgba(255, 229, 158, 0.48);
+  background: rgba(16, 22, 54, 0.58);
+  color: var(--gold-pale);
+  backdrop-filter: blur(8px);
+  cursor: pointer;
+  transition: background-color 180ms ease-out, border-color 180ms ease-out, transform 150ms ease-out, opacity 220ms ease-out;
+}
+
+.pill-control {
+  gap: var(--space-2);
+  padding: 8px 16px;
+  border-radius: 999px;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  line-height: 20px;
+}
+
+.audio-toggle {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  margin-left: auto;
+  box-shadow: 0 0 18px rgba(234, 185, 92, 0.25);
+}
+
+.pill-control:hover,
+.audio-toggle:hover {
+  background: rgba(24, 34, 78, 0.82);
+  border-color: var(--gold-bright);
+}
+
+.pill-control:active,
+.audio-toggle:active {
+  transform: scale(0.96);
+}
+
+.pill-control:focus-visible,
+.audio-toggle:focus-visible,
+.btn:focus-visible,
+.tap-prompt:focus-visible,
+.scroll-cue:focus-visible,
+.venue-link:focus-visible,
+.gate-portal:focus-visible {
+  outline: 2px solid var(--gold-bright);
+  outline-offset: 3px;
+}
+
+.pill-control:disabled,
+.audio-toggle:disabled,
+.btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.pill-control[hidden],
+.audio-toggle[hidden] {
+  display: none;
+}
+
+.pill-control.is-faded {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.eq {
+  display: inline-flex;
+  align-items: flex-end;
+  gap: 3px;
+  height: 16px;
+}
+
+.eq i {
+  display: block;
+  width: 3px;
+  height: 6px;
+  border-radius: 2px;
+  background: var(--gold-bright);
+  transition: height 180ms ease-out;
+}
+
+.audio-toggle[aria-pressed="true"] .eq i:nth-child(1) {
+  animation: eqBar 0.85s ease-in-out infinite alternate;
+}
+
+.audio-toggle[aria-pressed="true"] .eq i:nth-child(2) {
+  animation: eqBar 0.65s ease-in-out infinite alternate 0.2s;
+}
+
+.audio-toggle[aria-pressed="true"] .eq i:nth-child(3) {
+  animation: eqBar 0.95s ease-in-out infinite alternate 0.35s;
+}
+
+.audio-toggle[aria-pressed="false"] .eq i:nth-child(1) { height: 5px; opacity: 0.55; }
+.audio-toggle[aria-pressed="false"] .eq i:nth-child(2) { height: 10px; opacity: 0.55; }
+.audio-toggle[aria-pressed="false"] .eq i:nth-child(3) { height: 7px; opacity: 0.55; }
+
+/* ==========================================================================
+   Golden Buttons (5-state, 44px min height)
+   ========================================================================== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  min-height: 44px;
+  padding: 10px 26px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 243, 207, 0.55);
+  font-family: "Cinzel", Georgia, serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  line-height: 20px;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 180ms ease-out, border-color 180ms ease-out, transform 150ms ease-out, box-shadow 180ms ease-out;
+}
+
+.btn-gold {
+  background: linear-gradient(180deg, #ffedb8 0%, #eab95c 58%, #c99235 100%);
+  color: #2c1708;
+  box-shadow:
+    0 8px 24px rgba(10, 14, 38, 0.38),
+    0 0 18px rgba(234, 185, 92, 0.32);
+}
+
+.btn-gold:hover {
+  background: linear-gradient(180deg, #fff4ce 0%, #f5cb75 62%, #d8a245 100%);
+  box-shadow:
+    0 10px 28px rgba(10, 14, 38, 0.45),
+    0 0 26px rgba(255, 224, 138, 0.48);
+}
+
+.btn-gold:active {
+  transform: scale(0.97);
+}
+
+.btn-icon {
+  width: 16px;
+  height: 16px;
+  fill: currentColor;
+}
+
+/* ==========================================================================
+   Section 1: Landing Hero (Kota Jagmandir + Golden Firecrackers, No Curtains)
+   ========================================================================== */
+.hero {
+  position: relative;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+body.is-lit .hero {
+  cursor: default;
+}
+
+.hero-media {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.hero-bg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 58%;
+  filter: brightness(0.68) saturate(0.88);
+  transition: filter 1200ms ease-out;
+  animation: heroDrift 22s ease-in-out infinite alternate;
+}
+
+body.is-lit .hero-bg {
+  filter: brightness(1.06) saturate(1.12);
+}
+
+.hero-gold-wash {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse at 50% 62%,
+    rgba(255, 206, 102, 0.28) 0%,
+    rgba(234, 168, 66, 0.12) 38%,
+    transparent 72%
+  );
+  opacity: 0;
+  transition: opacity 1200ms ease-out;
+  pointer-events: none;
+}
+
+body.is-lit .hero-gold-wash {
+  opacity: 1;
+}
+
+.fireworks-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 4;
+  pointer-events: none;
+}
+
+.hero-shade {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background: linear-gradient(
+    180deg,
+    rgba(11, 18, 46, 0.56) 0%,
+    rgba(11, 18, 46, 0.2) 34%,
+    rgba(11, 18, 46, 0.04) 60%,
+    rgba(20, 35, 87, 0.45) 86%,
+    #142357 100%
+  );
+  pointer-events: none;
+}
+
+.sparkles {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+  opacity: 0.35;
+  transition: opacity 900ms ease-out;
+}
+
+body.is-lit .sparkles {
+  opacity: 1;
+}
+
+.sparkles span {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #fff0b8;
+  box-shadow: 0 0 12px 3px rgba(255, 214, 112, 0.85);
+  opacity: 0;
+  animation: twinkle 4.8s ease-in-out infinite;
+}
+
+.sparkles span:nth-child(1) { top: 14%; left: 16%; animation-delay: 0s; }
+.sparkles span:nth-child(2) { top: 22%; left: 82%; animation-delay: 1.1s; }
+.sparkles span:nth-child(3) { top: 62%; left: 20%; animation-delay: 2.2s; }
+.sparkles span:nth-child(4) { top: 66%; left: 76%; animation-delay: 0.6s; }
+.sparkles span:nth-child(5) { top: 72%; left: 48%; animation-delay: 2.9s; }
+.sparkles span:nth-child(6) { top: 56%; left: 60%; animation-delay: 1.7s; }
+.sparkles span:nth-child(7) { top: 32%; left: 28%; animation-delay: 3.4s; }
+.sparkles span:nth-child(8) { top: 78%; left: 32%; animation-delay: 2s; }
+.sparkles span:nth-child(9) { top: 44%; left: 86%; animation-delay: 0.9s; }
+.sparkles span:nth-child(10) { top: 48%; left: 14%; animation-delay: 2.6s; }
+
+/* Unlit Landing Intro */
+.hero-intro {
+  position: absolute;
+  inset: 0;
+  z-index: 6;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 76px var(--space-4) var(--space-6);
+  text-align: center;
+  opacity: 1;
+  transition: opacity 650ms ease-out, transform 650ms ease-out;
+}
+
+body.is-lit .hero-intro {
+  opacity: 0;
+  transform: translateY(-10px);
+  pointer-events: none;
+}
+
+.intro-top {
+  width: 100%;
+  max-width: 348px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.intro-kicker {
+  margin: 0;
+  font-family: "Cinzel", Georgia, serif;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.26em;
+  line-height: 20px;
+  text-transform: uppercase;
+  color: var(--gold-bright);
+  text-shadow: 0 2px 14px rgba(8, 12, 36, 0.9);
+}
+
+.intro-names {
+  margin: var(--space-2) 0 0;
+  font-family: "Great Vibes", cursive;
+  font-size: 50px;
+  font-weight: 400;
+  line-height: 1.08;
+  color: var(--gold-pale);
+  text-shadow:
+    0 4px 24px rgba(8, 12, 36, 0.85),
+    0 0 28px rgba(234, 185, 92, 0.42);
+}
+
+.intro-names span {
+  display: block;
+}
+
+.intro-amp {
+  font-family: "Great Vibes", cursive;
+  font-size: 28px;
+  line-height: 1;
+  color: var(--gold);
+  margin: 2px 0;
+}
+
+.intro-rule {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 168px;
+  margin: var(--space-2) auto;
+  color: var(--gold-bright);
+  font-size: 11px;
+  line-height: 1;
+}
+
+.intro-rule::before,
+.intro-rule::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+
+.intro-sub {
+  margin: 0;
+  font-family: "Cinzel", Georgia, serif;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  line-height: 20px;
+  text-transform: uppercase;
+  color: var(--gold-bright);
+  text-shadow: 0 2px 14px rgba(8, 12, 36, 0.9);
+}
+
+.tap-prompt {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-height: 48px;
+  padding: 10px 24px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 229, 158, 0.55);
+  background: rgba(14, 22, 56, 0.56);
+  backdrop-filter: blur(8px);
+  color: var(--gold-pale);
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 18px;
+  font-style: italic;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  box-shadow: 0 0 28px rgba(234, 185, 92, 0.3);
+  animation: gentlePulse 2.6s ease-in-out infinite;
+  transition: background-color 180ms ease-out, border-color 180ms ease-out, transform 150ms ease-out;
+}
+
+.tap-prompt:hover {
+  background: rgba(24, 34, 78, 0.8);
+  border-color: var(--gold-bright);
+}
+
+.tap-prompt:active {
+  transform: scale(0.97);
+}
+
+.tap-dot {
+  color: var(--gold);
+  font-style: normal;
+  font-size: 13px;
+}
+
+/* Lit Hero Content */
+.hero-welcome {
+  position: relative;
+  z-index: 5;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 76px var(--space-4) var(--space-5);
+  opacity: 0;
+  transform: translateY(14px);
+  pointer-events: none;
+  transition: opacity 900ms ease-out 350ms, transform 900ms ease-out 350ms;
+}
+
+body.is-lit .hero-welcome {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.hero-top {
+  max-width: 348px;
+}
+
+.hero-kicker {
+  margin: 0;
+  font-family: "Cinzel", Georgia, serif;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.24em;
+  line-height: 20px;
+  text-transform: uppercase;
+  color: var(--gold-bright);
+  text-shadow: 0 2px 14px rgba(8, 12, 36, 0.85);
+}
+
+.hero-names {
+  margin: var(--space-2) 0 0;
+  font-family: "Great Vibes", cursive;
+  font-size: 50px;
+  font-weight: 400;
+  line-height: 1.08;
+  color: var(--gold-pale);
+  text-shadow:
+    0 4px 24px rgba(8, 12, 36, 0.72),
+    0 0 28px rgba(234, 185, 92, 0.35);
+}
+
+.hero-names span {
+  display: block;
+}
+
+.hero-amp {
+  font-family: "Great Vibes", cursive;
+  font-size: 28px;
+  line-height: 1;
+  color: var(--gold);
+  margin: 2px 0;
+}
+
+.hero-date {
+  margin: var(--space-2) 0 0;
+  font-family: "Cinzel", Georgia, serif;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  line-height: 24px;
+  text-transform: uppercase;
+  color: var(--gold-pale);
+  text-shadow: 0 2px 14px rgba(8, 12, 36, 0.85);
+}
+
+.hero-city {
+  margin: var(--space-1) 0 0;
+  font-family: "Cinzel", Georgia, serif;
+  font-size: 12px;
+  letter-spacing: 0.24em;
+  line-height: 20px;
+  text-transform: uppercase;
+  color: var(--gold);
+  text-shadow: 0 2px 12px rgba(8, 12, 36, 0.85);
+}
+
+.scroll-cue {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-1);
+  min-width: 44px;
+  min-height: 44px;
+  padding: var(--space-2) var(--space-3);
+  color: var(--gold-pale);
+  text-decoration: none;
+  font-family: "Great Vibes", cursive;
+  font-size: 26px;
+  line-height: 28px;
+  text-shadow: 0 2px 14px rgba(8, 12, 36, 0.9);
+}
+
+.scroll-cue svg {
+  width: 20px;
+  height: 20px;
+  fill: none;
+  stroke: var(--gold-bright);
+  stroke-width: 1.9;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  animation: bob 2.2s ease-in-out infinite;
+}
+
+/* ==========================================================================
+   Shared Minimalist Section Styles & Rich Gold Filigree
+   ========================================================================== */
+.sec {
+  padding: var(--space-7) var(--space-4);
+  text-align: center;
+}
+
+.eyebrow {
+  margin: 0 0 var(--space-2);
+  font-size: 16px;
+  letter-spacing: 0.1em;
+  line-height: 24px;
+  color: var(--gold-bright);
+  text-shadow: 0 0 16px rgba(234, 185, 92, 0.32);
+}
+
+.sec-title {
+  margin: 0;
+  font-family: "Great Vibes", cursive;
+  font-size: 42px;
+  font-weight: 400;
+  line-height: 1.15;
+  color: var(--gold-pale);
+  text-shadow: 0 0 22px rgba(234, 185, 92, 0.28);
+}
+
+.filigree {
+  width: 208px;
+  margin: var(--space-2) auto var(--space-4);
+  filter: drop-shadow(0 0 8px rgba(234, 185, 92, 0.35));
+}
+
+.filigree svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.filigree path {
+  fill: none;
+  stroke: var(--gold);
+  stroke-width: 1.4;
+  stroke-linecap: round;
+}
+
+.filigree circle {
+  fill: var(--gold-bright);
+}
+
+.filigree .diya-bowl {
+  fill: var(--gold-deep);
+  stroke: var(--gold-bright);
+  stroke-width: 1.1;
+}
+
+.filigree .diya-flame {
+  fill: #fff1b8;
+  stroke: none;
+}
+
+/* ==========================================================================
+   Section 2: Interactive Golden Date Gates (Like Reference)
+   ========================================================================== */
+.date-sec {
+  padding-top: var(--space-6);
+  padding-bottom: var(--space-6);
+}
+
+.date-hint {
+  margin: 0 0 var(--space-4);
+  font-size: 16px;
+  font-style: italic;
+  line-height: 24px;
+  color: var(--gold-bright);
+  letter-spacing: 0.04em;
+}
+
+.gates-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  max-width: 348px;
+  margin: 0 auto;
+}
+
+.gate-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.gate-portal {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3 / 3.7;
+  min-height: 112px;
+  padding: 0;
+  border: 2px solid var(--gold);
+  border-radius: 56px 56px 10px 10px;
+  background: radial-gradient(
+    circle at 50% 52%,
+    #fffdf5 0%,
+    #fce6b0 42%,
+    #e8b85c 78%,
+    #a86e20 100%
+  );
+  box-shadow:
+    0 12px 26px rgba(7, 10, 30, 0.42),
+    0 0 22px rgba(234, 185, 92, 0.25);
+  overflow: hidden;
+  perspective: 520px;
+  cursor: pointer;
+  transition: box-shadow 250ms ease-out, transform 180ms ease-out, border-color 250ms ease-out;
+}
+
+.gate-portal:hover {
+  border-color: var(--gold-pale);
+  box-shadow:
+    0 14px 30px rgba(7, 10, 30, 0.48),
+    0 0 28px rgba(255, 224, 138, 0.45);
+}
+
+.gate-portal:active {
+  transform: scale(0.98);
+}
+
+.gate-portal.is-open {
+  border-color: var(--gold-bright);
+  box-shadow:
+    0 12px 28px rgba(7, 10, 30, 0.45),
+    0 0 32px rgba(255, 224, 138, 0.55);
+}
+
+.gate-back {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 4px 4px;
+}
+
+.gate-val {
+  font-family: "Cinzel", Georgia, serif;
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--arch-ink);
+  line-height: 1.1;
+  opacity: 0;
+  transform: scale(0.84);
+  transition: opacity 420ms ease-out 180ms, transform 420ms ease-out 180ms;
+}
+
+.gate-val-sm {
+  font-size: 18px;
+}
+
+.gate-portal.is-open .gate-val {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.gate-leaf {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 50%;
+  background: linear-gradient(
+    160deg,
+    #f9e2a4 0%,
+    #dfa94a 45%,
+    #b9812b 74%,
+    #ebd088 100%
+  );
+  transition: transform 820ms cubic-bezier(0.22, 1, 0.36, 1);
+  backface-visibility: hidden;
+}
+
+.gate-leaf::before {
+  content: "";
+  position: absolute;
+  inset: 8px 5px 8px 6px;
+  border: 1px solid rgba(124, 76, 16, 0.36);
+  border-radius: 36px 2px 4px 4px;
+}
+
+.gate-leaf-l {
+  left: 0;
+  transform-origin: left center;
+  border-right: 1px solid rgba(114, 68, 14, 0.55);
+}
+
+.gate-leaf-r {
+  right: 0;
+  transform-origin: right center;
+  border-left: 1px solid rgba(255, 244, 210, 0.55);
+}
+
+.gate-leaf-r::before {
+  inset: 8px 6px 8px 5px;
+  border-radius: 2px 36px 4px 4px;
+}
+
+.gate-ring {
+  position: absolute;
+  top: 56%;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  border: 1.8px solid #fff8df;
+  box-shadow: 0 1px 3px rgba(84, 48, 8, 0.55);
+}
+
+.gate-leaf-l .gate-ring {
+  right: 6px;
+}
+
+.gate-leaf-r .gate-ring {
+  left: 6px;
+}
+
+.gate-portal.is-open .gate-leaf-l {
+  transform: rotateY(-128deg);
+}
+
+.gate-portal.is-open .gate-leaf-r {
+  transform: rotateY(128deg);
+}
+
+.gate-label {
+  margin-top: var(--space-2);
+  font-family: "Cinzel", Georgia, serif;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  line-height: 16px;
+  text-transform: uppercase;
+  color: var(--gold-bright);
+}
+
+.date-revealed {
+  margin: var(--space-4) 0 0;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 20px;
+  font-style: italic;
+  font-weight: 600;
+  line-height: 28px;
+  color: var(--gold-pale);
+  text-shadow: 0 0 18px rgba(234, 185, 92, 0.4);
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 550ms ease-out, transform 550ms ease-out;
+}
+
+.date-revealed.is-shown {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ==========================================================================
+   Section 3: Animated Bride & Groom Arch
+   ========================================================================== */
+.arch-stage {
+  position: relative;
+  width: min(312px, 100%);
+  margin: var(--space-3) auto var(--space-4);
+  padding: 24px 20px 12px;
+}
+
+.aura {
+  position: absolute;
+  inset: 4px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(255, 224, 138, 0.34) 0%,
+    rgba(234, 185, 92, 0.14) 48%,
+    transparent 72%
+  );
+  pointer-events: none;
+}
+
+.rays {
+  position: absolute;
+  inset: -16px;
+  background: repeating-conic-gradient(
+    rgba(255, 229, 158, 0.12) 0deg 2.6deg,
+    transparent 2.6deg 13deg
+  );
+  -webkit-mask-image: radial-gradient(circle, #000 20%, transparent 68%);
+  mask-image: radial-gradient(circle, #000 20%, transparent 68%);
+  animation: slowSpin 46s linear infinite;
+  pointer-events: none;
+}
+
+.arch-outline {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: visible;
+}
+
+.arch-outer,
+.arch-inner,
+.arch-shimmer {
+  fill: none;
+  stroke-linecap: round;
+}
+
+.arch-outer {
+  stroke: rgba(255, 229, 158, 0.72);
+  stroke-width: 1.6;
+}
+
+.arch-inner {
+  stroke: rgba(234, 185, 92, 0.42);
+  stroke-width: 1.1;
+}
+
+.arch-shimmer {
+  stroke: #fff7d6;
+  stroke-width: 2.6;
+  stroke-dasharray: 84 900;
+  filter: drop-shadow(0 0 8px rgba(255, 232, 156, 0.95));
+  animation: shimmerTrace 6.5s linear infinite;
+}
+
+.couple-frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  border-radius: 150px 150px 12px 12px;
+  overflow: hidden;
+  border: 2px solid var(--gold);
+  box-shadow:
+    0 18px 42px rgba(8, 12, 34, 0.52),
+    0 0 28px rgba(234, 185, 92, 0.28),
+    inset 0 0 0 3px rgba(255, 247, 225, 0.3);
+  background: #f5efe3;
+}
+
+.couple-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+  transform-origin: 50% 45%;
+  animation: coupleBreathe 12s ease-in-out infinite alternate;
+}
+
+.diya-pair {
+  position: relative;
+  z-index: 4;
+  display: flex;
+  justify-content: space-between;
+  margin: -22px -6px 0;
+  pointer-events: none;
+}
+
+.diya-icon {
+  width: 46px;
+  height: 46px;
+  overflow: visible;
+}
+
+.diya-sm {
+  width: 48px;
+  height: 48px;
+  margin-top: var(--space-1);
+}
+
+.diya-glow {
+  fill: rgba(255, 214, 112, 0.45);
+  animation: glowPulse 2.4s ease-in-out infinite alternate;
+}
+
+.flame-outer {
+  fill: #f8a634;
+  transform-origin: 24px 26px;
+  animation: flicker 1.8s ease-in-out infinite alternate;
+}
+
+.flame-inner {
+  fill: #fff6c9;
+  transform-origin: 24px 26px;
+  animation: flicker 1.4s ease-in-out infinite alternate-reverse;
+}
+
+.clay {
+  fill: #b96b3b;
+}
+
+.clay-rim {
+  fill: #e09a5c;
+}
+
+.couple-caption {
+  max-width: 312px;
+  margin: var(--space-3) auto 0;
+  font-size: 18px;
+  font-style: italic;
+  line-height: 28px;
+  color: var(--ink);
+}
+
+/* ==========================================================================
+   Floating Golden & Marigold Petals
+   ========================================================================== */
+.petals {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.petals span {
+  position: absolute;
+  top: -12%;
+  width: 9px;
+  height: 12px;
+  border-radius: 70% 0 70% 0;
+  background: #f5b544;
+  opacity: 0.82;
+  animation: petalFall 11s linear infinite;
+}
+
+.petals span:nth-child(1) { left: 12%; animation-duration: 10s; }
+.petals span:nth-child(2) { left: 28%; animation-duration: 13s; animation-delay: -3s; background: #ffe07d; }
+.petals span:nth-child(3) { left: 48%; animation-duration: 11s; animation-delay: -7s; background: #fff4d1; }
+.petals span:nth-child(4) { left: 66%; animation-duration: 14s; animation-delay: -2s; }
+.petals span:nth-child(5) { left: 82%; animation-duration: 12s; animation-delay: -5s; background: #ffe07d; }
+.petals span:nth-child(6) { left: 92%; animation-duration: 10s; animation-delay: -8s; }
+
+.petals-soft span {
+  opacity: 0.7;
+}
+
+/* ==========================================================================
+   Section 4: The Venue (The Fern Kota — Above Countdown)
+   ========================================================================== */
+.venue-name {
+  margin: 0;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 26px;
+  font-weight: 600;
+  line-height: 32px;
+  color: var(--gold-pale);
+}
+
+.venue-address {
+  margin: var(--space-1) auto 0;
+  max-width: 320px;
+  font-size: 16px;
+  font-style: italic;
+  line-height: 24px;
+  color: var(--ink-soft);
+}
+
+.venue-kota {
+  margin: var(--space-1) 0 0;
+  font-family: "Cinzel", Georgia, serif;
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  line-height: 20px;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.venue-frame {
+  margin: var(--space-4) auto 0;
+  padding: 8px;
+  border-radius: 16px;
+  border: 1.5px solid var(--gold);
+  background: linear-gradient(
+    135deg,
+    rgba(255, 229, 158, 0.28),
+    rgba(234, 185, 92, 0.08)
+  );
+  box-shadow:
+    0 20px 44px rgba(7, 11, 32, 0.48),
+    0 0 28px rgba(234, 185, 92, 0.22);
+}
+
+.venue-media {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 236, 178, 0.58);
+}
+
+.venue-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 62%;
+  display: block;
+  animation: venueDrift 18s ease-in-out infinite alternate;
+}
+
+.venue-vignette {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(234, 185, 92, 0.08) 0%,
+    transparent 35%,
+    transparent 74%,
+    rgba(13, 20, 51, 0.34) 100%
+  );
+  pointer-events: none;
+}
+
+.venue-actions {
+  margin-top: var(--space-4);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.venue-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 8px 16px;
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--gold-bright);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.venue-link:hover {
+  color: var(--ink);
+}
+
+/* ==========================================================================
+   Section 5: Minimalist Arched Golden Countdown
+   ========================================================================== */
+.arch-countdown {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  max-width: 360px;
+  margin: var(--space-3) auto 0;
+}
+
+.arch-tile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.arch-value {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3 / 3.8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 8px;
+  border-radius: 44px 44px 10px 10px;
+  background: linear-gradient(180deg, var(--arch-cream-top) 0%, var(--arch-cream-bot) 100%);
+  border: 2px solid var(--gold-bright);
+  box-shadow:
+    inset 0 2px 10px rgba(255, 255, 255, 0.85),
+    0 10px 24px rgba(8, 12, 34, 0.38),
+    0 0 18px rgba(234, 185, 92, 0.25);
+  color: var(--arch-ink);
+  font-family: "Cinzel", Georgia, serif;
+  font-size: 24px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+}
+
+.arch-value::before {
+  content: "";
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  transform: translateX(-50%);
+  background: var(--gold-deep);
+}
+
+.arch-label {
+  margin-top: var(--space-2);
+  font-family: "Cinzel", Georgia, serif;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  line-height: 16px;
+  text-transform: uppercase;
+  color: var(--gold-bright);
+}
+
+.countdown-sub {
+  margin: var(--space-4) 0 0;
+  font-size: 18px;
+  font-style: italic;
+  line-height: 28px;
+  color: var(--ink);
+}
+
+.milestones {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-6);
+  margin-top: var(--space-5);
+}
+
+.milestone {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.milestone-title {
+  margin: 0;
+  font-family: "Great Vibes", cursive;
+  font-size: 28px;
+  line-height: 32px;
+  color: var(--gold-bright);
+}
+
+.milestone-date {
+  margin: 2px 0 0;
+  font-family: "Cinzel", Georgia, serif;
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  line-height: 16px;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+
+.chambal-waves {
+  width: calc(100% + var(--space-4) * 2);
+  height: 32px;
+  margin: var(--space-1) calc(var(--space-4) * -1) var(--space-4);
+  display: block;
+}
+
+.chambal-waves path {
+  fill: none;
+  stroke: rgba(255, 224, 138, 0.42);
+  stroke-width: 1.3;
+}
+
+/* ==========================================================================
+   Section 6: Minimalist Kota Closing
+   ========================================================================== */
+.closing {
+  padding: var(--space-5) var(--space-4) var(--space-7);
+  text-align: center;
+  border-top: 1px solid rgba(244, 206, 122, 0.28);
+}
+
+.closing-kota {
+  margin: 0 0 var(--space-4);
+  font-family: "Cinzel", Georgia, serif;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  line-height: 18px;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.closing-hi {
+  margin: 0;
+  font-size: 18px;
+  line-height: 28px;
+  color: var(--gold-bright);
+}
+
+.closing-en {
+  margin: var(--space-1) 0 0;
+  font-size: 16px;
+  font-style: italic;
+  line-height: 24px;
+  color: var(--ink-soft);
+}
+
+.closing-names {
+  margin: var(--space-4) 0 0;
+  font-family: "Great Vibes", cursive;
+  font-size: 38px;
+  line-height: 42px;
+  color: var(--gold-pale);
+  text-shadow: 0 0 20px rgba(234, 185, 92, 0.28);
+}
+
+.closing-meta {
+  margin: var(--space-1) 0 0;
+  font-family: "Cinzel", Georgia, serif;
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  line-height: 20px;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.closing-credit {
+  margin: var(--space-4) 0 0;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  line-height: 16px;
+  color: rgba(230, 221, 200, 0.7);
+}
+
+/* ==========================================================================
+   Scroll Reveal
+   ========================================================================== */
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 650ms ease-out, transform 650ms ease-out;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ==========================================================================
+   Keyframes
+   ========================================================================== */
+@keyframes heroDrift {
+  from { transform: scale(1.03) translate3d(0, 0, 0); }
+  to { transform: scale(1.11) translate3d(-1.5%, -1.5%, 0); }
+}
+
+@keyframes coupleBreathe {
+  from { transform: scale(1) translateY(0); }
+  to { transform: scale(1.045) translateY(-4px); }
+}
+
+@keyframes venueDrift {
+  from { transform: scale(1.04) translate3d(0, 0, 0); }
+  to { transform: scale(1.14) translate3d(-2.5%, -1.5%, 0); }
+}
+
+@keyframes petalFall {
+  0% { transform: translate3d(0, -10%, 0) rotate(0deg); }
+  50% { transform: translate3d(14px, 55%, 0) rotate(130deg); }
+  100% { transform: translate3d(-8px, 118%, 0) rotate(260deg); }
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0; transform: scale(0.6); }
+  50% { opacity: 0.95; transform: scale(1.3); }
+}
+
+@keyframes gentlePulse {
+  0%, 100% { box-shadow: 0 0 22px rgba(234, 185, 92, 0.25); }
+  50% { box-shadow: 0 0 36px rgba(255, 224, 138, 0.52); }
+}
+
+@keyframes bob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(5px); }
+}
+
+@keyframes slowSpin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes shimmerTrace {
+  from { stroke-dashoffset: 972; }
+  to { stroke-dashoffset: 0; }
+}
+
+@keyframes flicker {
+  from { transform: scale(1) rotate(-2deg); }
+  to { transform: scale(1.08, 0.95) rotate(2deg); }
+}
+
+@keyframes glowPulse {
+  from { opacity: 0.5; }
+  to { opacity: 0.9; }
+}
+
+@keyframes eqBar {
+  from { height: 4px; }
+  to { height: 15px; }
+}
+
+/* ==========================================================================
+   Small Phones & Reduced Motion
+   ========================================================================== */
+@media (max-width: 380px) {
+  .intro-names,
+  .hero-names {
+    font-size: 42px;
+  }
+
+  .sec-title {
+    font-size: 34px;
+  }
+
+  .arch-value,
+  .gate-val {
+    font-size: 20px;
+  }
+
+  .gate-val-sm {
+    font-size: 16px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .hero-bg,
+  .couple-img,
+  .venue-img,
+  .rays,
+  .arch-shimmer,
+  .petals span,
+  .sparkles span,
+  .tap-prompt,
+  .scroll-cue svg,
+  .flame-outer,
+  .flame-inner,
+  .diya-glow,
+  .audio-toggle[aria-pressed="true"] .eq i {
+    animation: none;
+  }
+
+  .petals {
+    display: none;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}

@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Srishti &amp; Yashovardhan · Save the Date</title>
+    <meta
+      name="description"
+      content="Save the date for the wedding of Srishti and Yashovardhan on 8 & 9 March 2027 at The Fern Kota, Rajasthan."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://yash908.github.io/srishti/" />
+    <meta property="og:title" content="Srishti &amp; Yashovardhan · Save the Date" />
+    <meta
+      property="og:description"
+      content="8 & 9 March 2027 · The Fern Kota · Kota, Rajasthan"
+    />
+    <meta property="og:image" content="https://yash908.github.io/srishti/kota-hero.jpg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Great+Vibes&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="is-locked">
+    <audio id="bg-music" src="mangal-rang.mp3" loop preload="auto"></audio>
+
+    <!-- Floating Controls -->
+    <div class="floating-bar" aria-label="Page controls">
+      <button type="button" class="pill-control" id="reset-hero" hidden>
+        <span aria-hidden="true">↻</span> Close it again
+      </button>
+      <button
+        type="button"
+        class="audio-toggle"
+        id="music-toggle"
+        aria-label="Play Mangal Rang"
+        aria-pressed="false"
+        hidden
+      >
+        <span class="eq" aria-hidden="true">
+          <i></i><i></i><i></i>
+        </span>
+      </button>
+    </div>
+
+    <!-- Main Phone-Width Minimalist Canvas -->
+    <main class="invite" id="invite">
+      <!-- 1. Landing Hero: Kishore Sagar & Jagmandir + Golden Firecrackers -->
+      <section class="hero" id="hero" aria-label="Save the date">
+        <div class="hero-media" aria-hidden="true">
+          <img src="kota-hero.jpg" alt="" class="hero-bg" />
+          <div class="hero-gold-wash"></div>
+          <canvas class="fireworks-canvas" id="fireworks"></canvas>
+          <div class="hero-shade"></div>
+          <div class="sparkles">
+            <span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span>
+            <span></span><span></span>
+          </div>
+        </div>
+
+        <!-- Initial Unlit State (before tap) -->
+        <div class="hero-intro" id="hero-intro">
+          <div class="intro-top">
+            <p class="intro-kicker">Save the Date</p>
+            <p class="intro-names">
+              <span>Srishti</span>
+              <span class="intro-amp" aria-hidden="true">&amp;</span>
+              <span>Yashovardhan</span>
+            </p>
+            <div class="intro-rule" aria-hidden="true"><span>✦</span></div>
+            <p class="intro-sub">To a wedding celebration</p>
+          </div>
+          <button type="button" class="tap-prompt" id="start-celebration">
+            <span class="tap-dot" aria-hidden="true">✦</span>
+            Tap to begin the celebration
+            <span class="tap-dot" aria-hidden="true">✦</span>
+          </button>
+        </div>
+
+        <!-- Illuminated State (after tap + fireworks) -->
+        <div class="hero-welcome" id="hero-welcome" inert>
+          <header class="hero-top">
+            <p class="hero-kicker">Save the Date</p>
+            <h1 class="hero-names" id="hero-heading" tabindex="-1">
+              <span>Srishti</span>
+              <span class="hero-amp" aria-hidden="true">&amp;</span>
+              <span>Yashovardhan</span>
+            </h1>
+
+            <div class="filigree" aria-hidden="true">
+              <svg viewBox="0 0 220 26">
+                <path d="M6 13 C32 13, 44 4, 66 13 C78 18, 88 13, 96 13" />
+                <path d="M214 13 C188 13, 176 4, 154 13 C142 18, 132 13, 124 13" />
+                <circle cx="52" cy="11" r="1.8" />
+                <circle cx="168" cy="11" r="1.8" />
+                <path class="diya-bowl" d="M101 16 Q110 23 119 16 Z" />
+                <path class="diya-flame" d="M110 3 Q115 10 110 15 Q105 10 110 3 Z" />
+              </svg>
+            </div>
+
+            <p class="hero-date">
+              <time datetime="2027-03-08">8</time> &amp;
+              <time datetime="2027-03-09">9 March 2027</time>
+            </p>
+            <p class="hero-city">Kota · Rajasthan</p>
+          </header>
+
+          <a class="scroll-cue" href="#date" aria-label="Scroll down to see the details">
+            <span>Scroll down</span>
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M6 9l6 6 6-6" />
+            </svg>
+          </a>
+        </div>
+      </section>
+
+      <!-- 2. The Date: Hidden Behind Interactive Golden Gates -->
+      <section class="sec date-sec reveal" id="date" aria-labelledby="date-title">
+        <h2 class="sec-title" id="date-title">The Date</h2>
+        <div class="filigree" aria-hidden="true">
+          <svg viewBox="0 0 220 26">
+            <path d="M6 13 C32 13, 44 4, 66 13 C78 18, 88 13, 96 13" />
+            <path d="M214 13 C188 13, 176 4, 154 13 C142 18, 132 13, 124 13" />
+            <circle cx="52" cy="11" r="1.8" />
+            <circle cx="168" cy="11" r="1.8" />
+            <path class="diya-bowl" d="M101 16 Q110 23 119 16 Z" />
+            <path class="diya-flame" d="M110 3 Q115 10 110 15 Q105 10 110 3 Z" />
+          </svg>
+        </div>
+
+        <p class="date-hint" id="date-hint">✦ Tap the gates to reveal the date ✦</p>
+
+        <div class="gates-row">
+          <div class="gate-col">
+            <button
+              type="button"
+              class="gate-portal"
+              data-gate="day"
+              aria-expanded="false"
+              aria-label="Open the gate to reveal the days"
+            >
+              <span class="gate-back">
+                <span class="gate-val">9</span>
+              </span>
+              <span class="gate-leaf gate-leaf-l" aria-hidden="true">
+                <i class="gate-ring"></i>
+              </span>
+              <span class="gate-leaf gate-leaf-r" aria-hidden="true">
+                <i class="gate-ring"></i>
+              </span>
+            </button>
+            <span class="gate-label">Day</span>
+          </div>
+
+          <div class="gate-col">
+            <button
+              type="button"
+              class="gate-portal"
+              data-gate="month"
+              aria-expanded="false"
+              aria-label="Open the gate to reveal the month"
+            >
+              <span class="gate-back">
+                <span class="gate-val gate-val-sm">March</span>
+              </span>
+              <span class="gate-leaf gate-leaf-l" aria-hidden="true">
+                <i class="gate-ring"></i>
+              </span>
+              <span class="gate-leaf gate-leaf-r" aria-hidden="true">
+                <i class="gate-ring"></i>
+              </span>
+            </button>
+            <span class="gate-label">Month</span>
+          </div>
+
+          <div class="gate-col">
+            <button
+              type="button"
+              class="gate-portal"
+              data-gate="year"
+              aria-expanded="false"
+              aria-label="Open the gate to reveal the year"
+            >
+              <span class="gate-back">
+                <span class="gate-val">2027</span>
+              </span>
+              <span class="gate-leaf gate-leaf-l" aria-hidden="true">
+                <i class="gate-ring"></i>
+              </span>
+              <span class="gate-leaf gate-leaf-r" aria-hidden="true">
+                <i class="gate-ring"></i>
+              </span>
+            </button>
+            <span class="gate-label">Year</span>
+          </div>
+        </div>
+
+        <p class="date-revealed" id="date-revealed" aria-live="polite">
+          Monday 8 &amp; Tuesday 9 March 2027
+        </p>
+      </section>
+
+      <!-- 3. Animated Bride & Groom Showcase -->
+      <section class="sec couple-sec reveal" id="couple" aria-labelledby="couple-title">
+        <p class="eyebrow">॥ श्री गणेशाय नमः ॥</p>
+        <h2 class="sec-title" id="couple-title">Srishti &amp; Yashovardhan</h2>
+        <div class="filigree" aria-hidden="true">
+          <svg viewBox="0 0 220 26">
+            <path d="M6 13 C32 13, 44 4, 66 13 C78 18, 88 13, 96 13" />
+            <path d="M214 13 C188 13, 176 4, 154 13 C142 18, 132 13, 124 13" />
+            <circle cx="52" cy="11" r="1.8" />
+            <circle cx="168" cy="11" r="1.8" />
+            <path class="diya-bowl" d="M101 16 Q110 23 119 16 Z" />
+            <path class="diya-flame" d="M110 3 Q115 10 110 15 Q105 10 110 3 Z" />
+          </svg>
+        </div>
+
+        <div class="arch-stage">
+          <div class="aura" aria-hidden="true"></div>
+          <div class="rays" aria-hidden="true"></div>
+
+          <svg class="arch-outline" viewBox="0 0 320 420" aria-hidden="true">
+            <path
+              class="arch-outer"
+              d="M16 408 V160 C16 88, 108 64, 160 12 C212 64, 304 88, 304 160 V408"
+            />
+            <path
+              class="arch-inner"
+              d="M28 408 V166 C28 100, 114 78, 160 30 C206 78, 292 100, 292 166 V408"
+            />
+            <path
+              class="arch-shimmer"
+              d="M16 408 V160 C16 88, 108 64, 160 12 C212 64, 304 88, 304 160 V408"
+            />
+          </svg>
+
+          <div class="couple-frame">
+            <img
+              src="bride-groom.jpg"
+              alt="Illustrated Rajasthani bride and groom holding hands beneath a sandstone Kota jharokha arch"
+              class="couple-img"
+            />
+            <div class="petals" aria-hidden="true">
+              <span></span><span></span><span></span><span></span><span></span><span></span>
+            </div>
+          </div>
+
+          <div class="diya-pair" aria-hidden="true">
+            <svg class="diya-icon" viewBox="0 0 48 48">
+              <ellipse class="diya-glow" cx="24" cy="18" rx="16" ry="14" />
+              <path class="flame-outer" d="M24 6 C30 15, 30 24, 24 28 C18 24, 18 15, 24 6 Z" />
+              <path class="flame-inner" d="M24 13 C27 18, 27 23, 24 26 C21 23, 21 18, 24 13 Z" />
+              <path class="clay" d="M9 28 Q24 41 39 28 Q24 32 9 28 Z" />
+              <ellipse class="clay-rim" cx="24" cy="28" rx="15" ry="3.2" />
+            </svg>
+            <svg class="diya-icon" viewBox="0 0 48 48">
+              <ellipse class="diya-glow" cx="24" cy="18" rx="16" ry="14" />
+              <path class="flame-outer" d="M24 6 C30 15, 30 24, 24 28 C18 24, 18 15, 24 6 Z" />
+              <path class="flame-inner" d="M24 13 C27 18, 27 23, 24 26 C21 23, 21 18, 24 13 Z" />
+              <path class="clay" d="M9 28 Q24 41 39 28 Q24 32 9 28 Z" />
+              <ellipse class="clay-rim" cx="24" cy="28" rx="15" ry="3.2" />
+            </svg>
+          </div>
+        </div>
+
+        <p class="couple-caption">
+          Together with our families, we warmly invite you to save the dates as we begin our forever in Kota.
+        </p>
+      </section>
+
+      <!-- 4. The Venue (Above Countdown) -->
+      <section class="sec venue-sec reveal" id="venue" aria-labelledby="venue-title">
+        <h2 class="sec-title" id="venue-title">The Venue</h2>
+        <div class="filigree" aria-hidden="true">
+          <svg viewBox="0 0 220 26">
+            <path d="M6 13 C32 13, 44 4, 66 13 C78 18, 88 13, 96 13" />
+            <path d="M214 13 C188 13, 176 4, 154 13 C142 18, 132 13, 124 13" />
+            <circle cx="52" cy="11" r="1.8" />
+            <circle cx="168" cy="11" r="1.8" />
+            <path class="diya-bowl" d="M101 16 Q110 23 119 16 Z" />
+            <path class="diya-flame" d="M110 3 Q115 10 110 15 Q105 10 110 3 Z" />
+          </svg>
+        </div>
+
+        <p class="venue-name">The Fern Kota</p>
+        <p class="venue-address">Deoli Arab to Naya Nohra Road, Kota, Rajasthan</p>
+        <p class="venue-kota">In the heritage city of Kota · By the Chambal</p>
+
+        <figure class="venue-frame">
+          <div class="venue-media">
+            <img
+              src="fern-kota.jpg"
+              alt="The Fern Kota decorated with a floral mandap and flower-lined aisle"
+              class="venue-img"
+            />
+            <div class="venue-vignette" aria-hidden="true"></div>
+            <div class="petals petals-soft" aria-hidden="true">
+              <span></span><span></span><span></span><span></span><span></span>
+            </div>
+          </div>
+        </figure>
+
+        <div class="venue-actions">
+          <a
+            class="btn btn-gold"
+            href="https://www.google.com/maps/search/?api=1&query=The+Fern+Kota+Deoli+Arab+to+Naya+Nohra+Road+Kota+Rajasthan"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <svg class="btn-icon" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z" />
+            </svg>
+            Open in Maps
+          </a>
+          <a
+            class="venue-link"
+            href="https://www.fernhotels.com/city-stays/the-fern-kota"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            View hotel details ↗
+          </a>
+        </div>
+      </section>
+
+      <!-- 5. Countdown Section -->
+      <section class="sec countdown-sec reveal" id="countdown" aria-labelledby="countdown-title">
+        <h2 class="sec-title" id="countdown-title">The celebration begins</h2>
+        <div class="filigree" aria-hidden="true">
+          <svg viewBox="0 0 220 26">
+            <path d="M6 13 C32 13, 44 4, 66 13 C78 18, 88 13, 96 13" />
+            <path d="M214 13 C188 13, 176 4, 154 13 C142 18, 132 13, 124 13" />
+            <circle cx="52" cy="11" r="1.8" />
+            <circle cx="168" cy="11" r="1.8" />
+            <path class="diya-bowl" d="M101 16 Q110 23 119 16 Z" />
+            <path class="diya-flame" d="M110 3 Q115 10 110 15 Q105 10 110 3 Z" />
+          </svg>
+        </div>
+
+        <div class="arch-countdown" aria-label="Countdown to 8 March 2027">
+          <div class="arch-tile">
+            <span class="arch-value" data-unit="days">0</span>
+            <span class="arch-label">Days</span>
+          </div>
+          <div class="arch-tile">
+            <span class="arch-value" data-unit="hours">00</span>
+            <span class="arch-label">Hours</span>
+          </div>
+          <div class="arch-tile">
+            <span class="arch-value" data-unit="minutes">00</span>
+            <span class="arch-label">Minutes</span>
+          </div>
+          <div class="arch-tile">
+            <span class="arch-value" data-unit="seconds">00</span>
+            <span class="arch-label">Seconds</span>
+          </div>
+        </div>
+
+        <p class="countdown-sub" id="countdown-note">
+          until the celebrations, on Monday, 8 March 2027
+        </p>
+
+        <div class="milestones" aria-label="Wedding dates">
+          <div class="milestone">
+            <p class="milestone-title">Day One</p>
+            <p class="milestone-date">8 Mar</p>
+            <svg class="diya-icon diya-sm" viewBox="0 0 48 48" aria-hidden="true">
+              <ellipse class="diya-glow" cx="24" cy="18" rx="16" ry="14" />
+              <path class="flame-outer" d="M24 6 C30 15, 30 24, 24 28 C18 24, 18 15, 24 6 Z" />
+              <path class="flame-inner" d="M24 13 C27 18, 27 23, 24 26 C21 23, 21 18, 24 13 Z" />
+              <path class="clay" d="M9 28 Q24 41 39 28 Q24 32 9 28 Z" />
+              <ellipse class="clay-rim" cx="24" cy="28" rx="15" ry="3.2" />
+            </svg>
+          </div>
+          <div class="milestone">
+            <p class="milestone-title">Day Two</p>
+            <p class="milestone-date">9 Mar</p>
+            <svg class="diya-icon diya-sm" viewBox="0 0 48 48" aria-hidden="true">
+              <ellipse class="diya-glow" cx="24" cy="18" rx="16" ry="14" />
+              <path class="flame-outer" d="M24 6 C30 15, 30 24, 24 28 C18 24, 18 15, 24 6 Z" />
+              <path class="flame-inner" d="M24 13 C27 18, 27 23, 24 26 C21 23, 21 18, 24 13 Z" />
+              <path class="clay" d="M9 28 Q24 41 39 28 Q24 32 9 28 Z" />
+              <ellipse class="clay-rim" cx="24" cy="28" rx="15" ry="3.2" />
+            </svg>
+          </div>
+        </div>
+
+        <svg class="chambal-waves" viewBox="0 0 440 36" preserveAspectRatio="none" aria-hidden="true">
+          <path d="M0 12 Q55 4, 110 12 T220 12 T330 12 T440 12" />
+          <path d="M0 24 Q55 16, 110 24 T220 24 T330 24 T440 24" />
+        </svg>
+
+        <button type="button" class="btn btn-gold" id="add-calendar">
+          Add to Calendar
+        </button>
+      </section>
+
+      <!-- 6. Minimalist Kota Closing -->
+      <footer class="closing reveal" id="closing">
+        <p class="closing-kota">Kishore Sagar · Jagmandir · Chambal</p>
+        <p class="closing-hi">आपकी उपस्थिति ही हमारा आशीर्वाद है</p>
+        <p class="closing-en">Your presence is our greatest blessing</p>
+        <p class="closing-names">Srishti &amp; Yashovardhan</p>
+        <p class="closing-meta">8 &amp; 9 March 2027 · The Fern Kota</p>
+      </footer>
+    </main>
+
+    <noscript>
+      <style>
+        body.is-locked { overflow: auto; }
+        .hero-intro { display: none; }
+        .hero-welcome { opacity: 1; pointer-events: auto; }
+        .reveal { opacity: 1; transform: none; }
+      </style>
+    </noscript>
+    <script src="main.js"></script>
+  </body>
+</html>
